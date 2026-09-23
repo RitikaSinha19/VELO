@@ -1,0 +1,888 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #180d20;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.app {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #180d20;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    height: 64px;
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    background: #24102f;
+
+    border-bottom: 2px solid #ff3fa4;
+
+    box-shadow:
+        0 2px 18px rgba(255, 42, 148, 0.25);
+}
+
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #ff2f9b,
+        #ff55c0
+    );
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 15px rgba(255, 47, 155, 0.55);
+}
+
+.logo h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 21px;
+    font-weight: 800;
+}
+
+
+/* Navigation */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links span {
+    position: relative;
+
+    padding: 22px 0;
+
+    color: #d5a8d0;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.nav-links span:hover {
+    color: #ff72c3;
+}
+
+.nav-links .active {
+    color: #ff4eaa;
+    font-weight: 700;
+}
+
+.nav-links .active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 3px;
+
+    border-radius: 3px;
+
+    background: #ff3fa4;
+
+    box-shadow:
+        0 0 10px rgba(255, 63, 164, 0.8);
+}
+
+
+/* =========================================
+   MAIN WORKSPACE
+========================================= */
+
+.workspace {
+    flex: 1;
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns: 38% 62%;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   PROBLEM PANEL
+========================================= */
+
+.problem-panel {
+    min-width: 0;
+    min-height: 0;
+
+    padding: 26px;
+
+    background: #fffaff;
+
+    color: #40283d;
+
+    border-right: 3px solid #ff3fa4;
+
+    overflow-y: auto;
+
+    box-shadow:
+        4px 0 20px rgba(255, 42, 148, 0.12);
+}
+
+
+/* =========================================
+   PROBLEM HEADER
+========================================= */
+
+.problem-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+.problem-header > div:first-child {
+    min-width: 0;
+}
+
+.problem-header h2 {
+    margin: 0 0 14px;
+
+    color: #3c2037;
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   DIFFICULTY CARDS
+========================================= */
+
+.difficulty-card {
+    min-width: 150px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 12px;
+
+    border: 2px solid;
+
+    border-radius: 12px;
+
+    flex-shrink: 0;
+}
+
+.difficulty-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    font-size: 20px;
+}
+
+.difficulty-card > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.difficulty-label {
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.difficulty-level {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* Pookie */
+
+.difficulty-card.easy {
+    background: #ffe1f0;
+
+    border-color: #ff4fa3;
+
+    color: #d31670;
+
+    box-shadow:
+        0 4px 12px rgba(255, 52, 157, 0.16);
+}
+
+.difficulty-card.easy .difficulty-icon {
+    background: #ffb7d7;
+}
+
+
+/* Aura */
+
+.difficulty-card.medium {
+    background: #e9ddff;
+
+    border-color: #8b5cf6;
+
+    color: #6331d5;
+
+    box-shadow:
+        0 4px 12px rgba(139, 92, 246, 0.16);
+}
+
+.difficulty-card.medium .difficulty-icon {
+    background: #c8b2ff;
+}
+
+
+/* Sigma */
+
+.difficulty-card.hard {
+    background: #fff0a8;
+
+    border-color: #ffc400;
+
+    color: #925f00;
+
+    box-shadow:
+        0 4px 12px rgba(255, 196, 0, 0.18);
+}
+
+.difficulty-card.hard .difficulty-icon {
+    background: #ffdc4d;
+}
+
+
+/* =========================================
+   TAGS
+========================================= */
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 24px;
+}
+
+.tags span {
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    background: #ffe0f0;
+
+    border: 2px solid #ff9dcc;
+
+    color: #c51f70;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   PROBLEM CONTENT
+========================================= */
+
+.problem-content {
+    max-width: 720px;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+.problem-content h3 {
+    margin-top: 24px;
+    margin-bottom: 10px;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    color: #45243b;
+}
+
+.problem-content p {
+    margin: 0 0 12px;
+
+    color: #664b5e;
+}
+
+
+/* =========================================
+   EXAMPLES
+========================================= */
+
+.example {
+    margin-bottom: 20px;
+}
+
+.example pre {
+    margin: 8px 0;
+
+    padding: 12px 14px;
+
+    background: #ffe8f4;
+
+    border: 2px solid #ff9dca;
+
+    border-left: 5px solid #ff2995;
+
+    border-radius: 8px;
+
+    overflow-x: auto;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 13px;
+
+    color: #542c46;
+}
+
+
+/* =========================================
+   CONSTRAINTS
+========================================= */
+
+.constraints {
+    padding-left: 20px;
+}
+
+.constraints li {
+    margin-bottom: 7px;
+
+    color: #664b5e;
+}
+
+.constraints li::marker {
+    color: #ff1590;
+}
+
+
+/* =========================================
+   PROBLEM SCROLLBAR
+========================================= */
+
+.problem-panel::-webkit-scrollbar {
+    width: 7px;
+}
+
+.problem-panel::-webkit-scrollbar-thumb {
+    background: #ff65ad;
+
+    border-radius: 10px;
+}
+
+.problem-panel::-webkit-scrollbar-track {
+    background: #ffe5f1;
+}
+
+
+/* =========================================
+   EDITOR PANEL
+========================================= */
+
+.editor-panel {
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #100b18;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   EDITOR HEADER
+========================================= */
+
+.editor-header {
+    height: 56px;
+    min-height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    background: #24102f;
+
+    border-bottom: 2px solid #8d36c9;
+}
+
+
+/* =========================================
+   LANGUAGE SELECTOR
+========================================= */
+
+.editor-header select {
+    min-width: 130px;
+
+    padding: 8px 12px;
+
+    border: 2px solid #9b42d7;
+
+    border-radius: 8px;
+
+    background: #321443;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+.editor-header select:hover {
+    border-color: #d05cff;
+}
+
+.editor-header select:focus {
+    border-color: #ff4fa3;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 79, 163, 0.15);
+}
+
+
+/* =========================================
+   EDITOR ACTIONS
+========================================= */
+
+.editor-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.editor-header button {
+    padding: 8px 16px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* Reset */
+
+.reset-button {
+    background: #321443;
+
+    color: #f4d9f1;
+
+    border: 2px solid #8e43ba;
+}
+
+.reset-button:hover {
+    background: #45205a;
+
+    border-color: #c35ce9;
+}
+
+
+/* Run */
+
+.run-button {
+    background: linear-gradient(
+        135deg,
+        #ff1590,
+        #ff4fb0
+    );
+
+    color: white;
+
+    border: 2px solid #ff42a6;
+
+    box-shadow:
+        0 3px 0 #b90d68,
+        0 0 15px rgba(255, 21, 144, 0.3);
+}
+
+.run-button:hover {
+    background: linear-gradient(
+        135deg,
+        #ff0090,
+        #ff2fa5
+    );
+}
+
+
+/* =========================================
+   MONACO
+========================================= */
+
+.editor-container {
+    flex: 1;
+
+    min-height: 0;
+
+    background: #111111;
+
+    border-left: 1px solid #3b1b4d;
+    border-right: 1px solid #3b1b4d;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-section {
+    height: 130px;
+    min-height: 130px;
+
+    padding: 12px 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    background: #21102b;
+
+    border-top: 2px solid #8d36c9;
+}
+
+.input-section h3 {
+    margin: 0;
+
+    color: #ff58b5;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.input-section textarea {
+    width: 100%;
+
+    flex: 1;
+
+    resize: none;
+
+    padding: 9px 11px;
+
+    background: #130b18;
+
+    border: 2px solid #703496;
+
+    border-radius: 8px;
+
+    color: #fbeaff;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+.input-section textarea:focus {
+    border-color: #ff3fa4;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 63, 164, 0.12);
+}
+
+.input-section textarea::placeholder {
+    color: #9c729f;
+}
+
+
+/* =========================================
+   OUTPUT
+========================================= */
+
+.output-section {
+    height: 150px;
+    min-height: 150px;
+
+    padding: 12px 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    background: #171321;
+
+    border-top: 2px solid #00c8ff;
+}
+
+.output-section h3 {
+    margin: 0;
+
+    color: #00d5ff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.output-box {
+    flex: 1;
+
+    padding: 10px 12px;
+
+    background: #0d1720;
+
+    border: 2px solid #00aeda;
+
+    border-radius: 8px;
+
+    color: #9deeff;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    white-space: pre-wrap;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================
+   PANEL HEADER
+========================================= */
+
+.panel-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.panel-header h3 {
+    margin: 0;
+}
+
+.panel-header button {
+    padding: 5px 10px;
+
+    border: 1px solid #b83c8d;
+
+    border-radius: 6px;
+
+    background: #321443;
+
+    color: #ff8bc7;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.panel-header button:hover {
+    background: #472052;
+}
+
+
+/* =========================================
+   OUTPUT SCROLLBAR
+========================================= */
+
+.output-box::-webkit-scrollbar {
+    width: 7px;
+}
+
+.output-box::-webkit-scrollbar-thumb {
+    background: #00c8ff;
+
+    border-radius: 10px;
+}
+
+.output-box::-webkit-scrollbar-track {
+    background: #10232b;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .workspace {
+        grid-template-columns: 42% 58%;
+    }
+
+    .problem-panel {
+        padding: 20px;
+    }
+
+    .difficulty-card {
+        min-width: 135px;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .workspace {
+        grid-template-columns: 1fr;
+
+        overflow-y: auto;
+    }
+
+    .problem-panel {
+        height: 45vh;
+        min-height: 350px;
+
+        border-right: none;
+
+        border-bottom: 3px solid #ff3fa4;
+    }
+
+    .editor-panel {
+        height: 55vh;
+        min-height: 500px;
+    }
+
+    .problem-header {
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .nav-links span:not(.active) {
+        display: none;
+    }
+
+    .navbar {
+        height: 58px;
+        min-height: 58px;
+    }
+
+    .nav-links span {
+        padding: 19px 0;
+    }
+
+    .problem-header h2 {
+        font-size: 22px;
+    }
+
+    .difficulty-card {
+        min-width: 135px;
+    }
+
+    .editor-header {
+        padding: 0 10px;
+    }
+
+    .editor-header select {
+        min-width: 105px;
+    }
+
+    .editor-header button {
+        padding: 7px 11px;
+    }
+}
